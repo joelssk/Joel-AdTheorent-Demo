@@ -1,6 +1,6 @@
 <?php
 include_once 'config.php';
- testing
+
 function sec_session_start() {
     $session_name = 'sec_session_id';
     $secure = SECURE;
