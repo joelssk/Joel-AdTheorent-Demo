@@ -17,7 +17,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     if (strlen($password) != 128) {
         $error_msg .= '<p class="error">Something Wrong</p>';
     }
-    $prep_stmt = "SELECT id FROM Members WHERE email = ? LIMIT 1";
+    $prep_stmt = "SELECT id FROM maindb WHERE email = ? LIMIT 1";
     $stmt = $mysqli->prepare($prep_stmt);
  
    // chkemail
@@ -37,7 +37,7 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     }
  
     // chkuser
-    $prep_stmt = "SELECT id FROM Members WHERE username = ? LIMIT 1";
+    $prep_stmt = "SELECT id FROM maindb WHERE username = ? LIMIT 1";
     $stmt = $mysqli->prepare($prep_stmt);
  
     if ($stmt) {
@@ -58,12 +58,12 @@ if (isset($_POST['username'], $_POST['email'], $_POST['p'])) {
     if (empty($error_msg)) {
         $random_salt = hash('sha512', uniqid(mt_rand(1, mt_getrandmax()), true));
         $password = hash('sha512', $password . $random_salt);
-        if ($insert_stmt = $mysqli->prepare("INSERT INTO Members (username, email, password, salt) VALUES (?, ?, ?, ?)")) {
+        if ($insert_stmt = $mysqli->prepare("INSERT INTO maindb (username, email, password, salt) VALUES (?, ?, ?, ?)")) {
             $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
             if (! $insert_stmt->execute()) {
                 header('Location: ../error.php?err=Registration failure: INSERT');
             }
         }
-        header('Location: dashboard.php');
+        header('Location: index.php?registered=1');
     }
 }

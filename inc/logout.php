@@ -10,5 +10,5 @@ setcookie(session_name(),
         $params["secure"], 
         $params["httponly"]);
 session_destroy();
-header('Location: ../index.php');
+header('Location: ../index.php?loggedout=1');
 ?>

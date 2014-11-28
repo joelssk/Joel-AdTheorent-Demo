@@ -1,8 +1,8 @@
 <?php
-define("HOST", "mysql17.000webhost.com");
-define("USER", "a3036521_adt"); 
-define("PASSWORD", "omgomg123");
-define("DATABASE", "a3036521_adt");
+define("HOST", "mysql.2freehosting.com");
+define("USER", "u450039885_adt"); 
+define("PASSWORD", "adtadt123");
+define("DATABASE", "u450039885_adt");
  
 define("CAN_REGISTER", "any");
 define("DEFAULT_ROLE", "member");

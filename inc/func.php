@@ -21,7 +21,7 @@ function sec_session_start() {
 }
 function login($email, $password, $mysqli) {
     if ($stmt = $mysqli->prepare("SELECT id, username, password, salt 
-        FROM Members
+        FROM maindb
        WHERE email = ?
         LIMIT 1")) {
         $stmt->bind_param('s', $email);
@@ -53,7 +53,7 @@ function login($email, $password, $mysqli) {
                 } else {
                     // BAD ATTEMPT
                     $now = time();
-                    $mysqli->query("INSERT INTO Attempts(user_id, time)
+                    $mysqli->query("INSERT INTO attempts(user_id, time)
                                     VALUES ('$user_id', '$now')");
                     return false;
                 }
@@ -97,7 +97,7 @@ function login_check($mysqli) {
         $user_browser = $_SERVER['HTTP_USER_AGENT'];
  
         if ($stmt = $mysqli->prepare("SELECT password 
-                                      FROM Members 
+                                      FROM maindb 
                                       WHERE id = ? LIMIT 1")) {
             $stmt->bind_param('i', $user_id);
             $stmt->execute();
@@ -156,7 +156,7 @@ function esc_url($url) {
 function LoadDB() {
 require('db_connect.php');
 
-$sql = "SELECT * FROM Members";
+$sql = "SELECT * FROM maindb";
 $result = mysqli_query($mysqli,$sql)or die(mysqli_error());
 
 echo <<< endhtml

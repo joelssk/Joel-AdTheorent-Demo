@@ -5,7 +5,8 @@ include_once 'inc/func.php';
 sec_session_start();
 ?>
 <!DOCTYPE html>
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -17,9 +18,9 @@ sec_session_start();
    <link rel="stylesheet" href="upload/css/jquery.fileupload.css">
    <link rel="stylesheet" href="http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
    <link rel="stylesheet" href="gallery/css/bootstrap-image-gallery.css">
+   <link rel="stylesheet" type="text/css" href="fancybox/source/jquery.fancybox.css?v=2.1.5" media="screen" />
    <link href="css/carousel.css" rel="stylesheet">
    <script src="./Narrow Jumbotron Template for Bootstrap_files/ie-emulation-modes-warning.js"></script><style type="text/css"></style>
-   
   <title>Welcome to the AdTheorent Demo!</title>
    
   </head>
@@ -65,7 +66,16 @@ sec_session_start();
 				<div id="files" class="files"></div>
 				<br>
 				<br>
-			
+			<h4>FancyBox</h4>
+				<a class="various fancybox.iframe" href="http://www.youtube.com/embed/b7YUnM5apXc?autoplay=1">
+				<span class="btn btn-primary">
+					<i class="glyphicon glyphicon-film"></i>
+					<span>Load youtube video</span>
+				</span></a>
+				<br>
+				<br>
+				<br>
+				<br>
 			<h4>SQL Data to Bootstrap Table</h4>
 			<?php LoadDB() ?>
 
@@ -158,11 +168,56 @@ sec_session_start();
 		</div>
       </div>
 
+  </div>
+<div class="container-fluid">
+<br>
+<br>
+<h2>Carousel</h2>
+<br>
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+ 
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="item active">
+      <img src="img/green.jpg" alt="...">
+      <div class="carousel-caption">
+          <h3>Green</h3>
+      </div>
+    </div>
+    <div class="item">
+      <img src="img/blue.jpg" alt="...">
+      <div class="carousel-caption">
+          <h3>Blue</h3>
+      </div>
+    </div>
+    <div class="item">
+      <img src="img/red.jpg" alt="...">
+      <div class="carousel-caption">
+          <h3>Red</h3>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+</div> <!-- Carousel -->
+
+
       <footer class="footer">
         <p>© Joel 2014</p>
       </footer>
-
-  </div>
+</div>
 
         <?php else : ?>
             <p>
@@ -175,7 +230,9 @@ sec_session_start();
         <?php endif; ?>
 
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+<script type='text/javascript' src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 <script src="ui/jquery-ui.js"></script>
 <script src="upload/js/vendor/jquery.ui.widget.js"></script>
 <script src="upload/js/jquery.iframe-transport.js"></script>
@@ -185,12 +242,22 @@ sec_session_start();
 <script src="gallery/js/demo.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 <script src="./Narrow Jumbotron Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
-
 <script>
 $( "#accordion" ).accordion();
 $( "#datepicker" ).datepicker({
 	inline: true
 });
+$(".various").fancybox({
+		maxWidth	: 800,
+		maxHeight	: 600,
+		fitToView	: false,
+		width		: '70%',
+		height		: '70%',
+		autoSize	: false,
+		closeClick	: false,
+		openEffect	: 'none',
+		closeEffect	: 'none'
+	});
 $(function () {
     'use strict';
     var url = window.location.hostname === 'joel.comeze.com' ?

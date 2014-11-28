@@ -20,7 +20,7 @@ if (login_check($mysqli) == true) {
    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
    <title>Joel Adtheorent Demo</title>
    <link href="inc/styles.css" rel="stylesheet">
-   <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
    <script type="text/JavaScript" src="inc/sha512.js"></script> 
    <script type="text/JavaScript" src="inc/hash.js"></script> 
   </head>
@@ -33,10 +33,24 @@ if (login_check($mysqli) == true) {
                     alt="">
 <?php
         if (isset($_GET['error'])) {
-            echo '<p class="error">Login Failed</p>';
+            echo '<div class="alert alert-danger" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Error:</span>
+  The email or password you entered was incorrect.
+</div>';
         }
-        if (isset($_GET['success'])) {
-            echo '<p class="success">Good</p>';
+        if (isset($_GET['loggedout'])) {
+            echo '<div class="alert alert-info" role="alert">
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  <span class="sr-only">Warning:</span>
+  You have been logged out.
+</div>';
+        }
+        if (isset($_GET['registered'])) {
+            echo '<div class="alert alert-success" role="alert">
+  <span class="sr-only">Warning:</span>
+  Account created successfully. Login to continue.
+</div>';
         }
 ?> 
                 <form action="inc/login.php" method="post" name="login_form" class="form-signin">
